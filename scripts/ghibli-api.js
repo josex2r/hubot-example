@@ -37,4 +37,16 @@ module.exports = (robot) => {
     });
   });
 
+  robot.respond(/detalle de la pelicula ([\w-]+)/i, (res) => {
+    const id = res.match[1];
+
+    callAPI(robot, `films/${id}`).then((data) => {
+      const message = formatter.formatDetail(data);
+
+      res.send(message);
+    }, (error) => {
+      res.reply(`Ha habido un error: ${error.message}`);
+    });
+  });
+
 };
