@@ -10,3 +10,8 @@ cd hubot-example
 npm install
 ./bin/hubot
 ```
+
+## Plantilla
+
+En la rama [#template](https://github.com/josex2r/hubot-example/tree/template) se encuentra el proyecto inicializado con lo necesario para programar el bot.
+
