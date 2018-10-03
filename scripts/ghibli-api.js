@@ -6,12 +6,6 @@ module.exports = (robot) => {
   const adapter = robot.adapterName;
   const formatter = require(`../lib/formatters/${adapter}`);
 
-  robot.hear(/ayuda/i, (res) => {
-    const message = formatter.formatHelp();
-
-    res.reply(message);
-  });
-
   robot.respond(/listado de peliculas/i, (res) => {
     callAPI(robot, 'films').then((data) => {
       const message = formatter.formatFilms(data);
