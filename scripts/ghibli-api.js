@@ -6,7 +6,7 @@ module.exports = (robot) => {
   const adapter = robot.adapterName;
   const formatter = require(`../lib/formatters/${adapter}`);
 
-  robot.respond(/listado de peliculas/i, (res) => {
+  robot.respond(/listado de pel[íi]culas/i, (res) => {
     callAPI(robot, 'films').then((data) => {
       const message = formatter.formatFilms(data);
 
@@ -16,7 +16,7 @@ module.exports = (robot) => {
     });
   });
 
-  robot.respond(/(\d) (ultimas|primeras) peliculas/i, (res) => {
+  robot.respond(/(\d) ([úu]ltimas|primeras) pel[íi]culas/i, (res) => {
     const limit = res.match[1];
     const order = res.match[2] === 'ultimas' ? -1 : 1;
 
@@ -37,7 +37,7 @@ module.exports = (robot) => {
     });
   });
 
-  robot.respond(/detalle de la pelicula ([\w-]+)/i, (res) => {
+  robot.respond(/detalle de la pel[íi]cula ([\w-]+)/i, (res) => {
     const id = res.match[1];
 
     callAPI(robot, `films/${id}`).then((data) => {
